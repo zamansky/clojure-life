@@ -75,7 +75,7 @@
 
   )
 )
-(defn canvas2 [state]
+(defn canvas [state]
   (let [state state]
     (r/create-class
      {:display-name "canvas"
@@ -111,9 +111,9 @@
 
 (defn simple-component []
   [:div
-   [:h1.title "I am a component !"]
+   [:h1.title "Life!"]
    [:hr]
-   [canvas2 state]
+   [canvas state]
    [:hr]
    [:div.section
     [:button.button.is-primary {:on-click #(swap! state l/generate)} "Step"]
@@ -126,9 +126,7 @@
                                                     :on-change #(reset! fill-value (-> % .-target .-value))
                                                     :type "range" :step 1 :min 500 :max 10000 :value @fill-value}]
     ]
-   [:p.someclass
-    "I have " [:strong "bold"]
-    [:span {:style {:color "red"}} " and red "] "text."]])
+   ])
 
 
 (defn mount [c]
@@ -136,8 +134,8 @@
 )
 
 (defn reload! []
-(mount simple-component)
-(println "FOOFOOFOO!!"))
+  (mount simple-component)
+  )
 
 (defn main! []
 (mount simple-component))
